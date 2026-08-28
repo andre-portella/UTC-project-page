@@ -189,7 +189,15 @@
             <h2 class="title is-3 section-title">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                Active Prompt Learning has emerged as an effective paradigm for adapting pre-trained vision-language models with minimal human annotations. However, selecting initial samples under the "cold start" regime remains challenging due to the lack of labeled target data. In this work, we propose <strong>Unsupervised Transfer Clustering (UTC)</strong> to mitigate the cold start problem by transferring cluster structures from source representations to guide active sample selection. Extensive experiments demonstrate that UTC significantly boosts initial prompt optimization efficiency and overall downstream performance.
+                Vision-Language Models (VLMs) are able to achieve impressive zero-shot classification performance by aligning visual and textual representations, but each new task still demands handcrafted prompts.
+                Active Prompt Learning (APL) combines Active Learning (AL) and Prompt Learning (PL) into a single framework, allowing for the usage of the VLM prior knowledge for iteratively querying the most informative images to be labeled.  
+                However, the cold-start problem is still relevant for APL methods, where the performance of the initial query can be worse than random sampling.
+                While recent state-of-the-art APL methods mitigate with balanced sampling and multimodal features, they rely on rigid, distance-based clustering to group these features.
+                This simplistic approach can struggle to capture the complex, high-dimensional semantic distributions inherent to VLMs, leading to suboptimal query representativeness.
+                Unsupervised transfer can be applied to these features as a possible alternative, since it is capable of inferring the underlying human labeling of a task without any form of supervision. This way, samples can be grouped in semantically coherent clusters. 
+                This paper proposes Unsupervised Transfer Clustering with Selective Querying (UTC+SQ), a framework that enhances a recent APL approach by leveraging state-of-the-art unsupervised transfer model.
+                These models generate high-fidelity pseudo-labels that establish semantically meaningful clusters, allowing for the selection of more relevant samples.
+                Experimental evaluations demonstrate that shifting from distance-based to projection-based clustering improves the representativeness of the queried subset, achieving accuracy \Rep{improvements}{gains} in 6 of the 8 datasets tested.
               </p>
             </div>
           </div>
