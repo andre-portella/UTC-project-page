@@ -49,7 +49,7 @@
       font-weight: 700;
     }
     .publication-authors a {
-      color: hsl(204, 86%, 53%);
+      color: hsl(209, 61%, 66%);
     }
     .publication-authors a:hover {
       text-decoration: underline;
@@ -225,7 +225,12 @@
             <img src="static/images/UTC.png" alt="UTC Framework Overview" class="overview-image" loading="lazy">
             <div class="content has-text-justified">
               <p>
-                <strong>Overview of the UTC framework:</strong> The pipeline leverages unsupervised transfer clustering to discover informative feature partitions without supervision. By mitigating cold start uncertainty, UTC guides the active learning loop to query the most representative visual samples for prompt tuning.
+                <strong>Overview of the UTC framework: Figure below presents an overview of our approach, where we keep the class-guided features
+                from APL, but we replace its simplistic distance-based clustering technique by state-of-the-art unsupervised
+                transfer models that are able to generate semantically meaningful pseudo-labels using only these features and the number of
+                classes. Using these pseudo-labels we define clusters and select the most informative sample from each one. These samples
+                are then annotated by a human oracle and used for prompt learning. This process is repeated for each round of APL,
+                where we kept the same annotation budget per round and budget-saving selective querying from APL.
               </p>
             </div>
           </div>
@@ -250,8 +255,15 @@
             <h3 class="title is-4 has-text-left mt-5">Benchmark Comparison</h3>
             <div class="content has-text-justified">
               <p>
-                Quantitative evaluation across multiple standard vision benchmarks evaluating prompt adaptation accuracy.
-              </p>
+                Mean accuracy and standard deviation comparing the baseline (CB+SQ) against the best configuration of UTC+SQ framework across 8 APL rounds.
+                On DTD, EuroSAT, CIFAR-10, and STL-10, our UTC+SQ framework established a strong initial advantage over the baseline
+                that expanded across all rounds (e.g., reaching 96.40% vs. 95.07% on STL-10 at the last round). Conversely, on Caltech101 
+                and Flowers102, the baseline initially outperformed our method. However, the superior representativeness of the
+                semantic clusters allowed our method to close the gap and surpass the baseline by round 8 (e.g., 93.17% vs. 91.95% on Caltech101). On the fine-grained
+                Aircraft dataset, both methods exhibited similar performance, while on OxfordPets, the baseline recovered from a round 1 deficit to finish slightly ahead
+                (88.11% vs. 85.95%). Overall, the mean accuracy trajectories across the rounds confirm that our UTC+SQ framework - which replaces k-means with unsupervised transfer — 
+                provides a highly effective foundation, achieving the highest final accuracy on 6 out of the 8 benchmarks.
+
             </div>
             <img src="static/images/results_table.png" alt="Benchmark Table" class="overview-image" loading="lazy">
           </div>
