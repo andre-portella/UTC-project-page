@@ -101,6 +101,31 @@
       flex: none;
     }
 
+    .section-title::after,
+    .section-title::before,
+    .title::after,
+    .title::before {
+      display: none !important;
+      content: none !important;
+      border: none !important;
+    }
+
+    a::after,
+    a::before,
+    a:hover::after,
+    a:hover::before,
+    .button::after,
+    .button::before,
+    .button:hover::after,
+    .button:hover::before,
+    .publication-links a::after,
+    .publication-links a::before {
+      display: none !important;
+      content: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+
   </style>
 
   <script type="application/ld+json">
@@ -166,7 +191,7 @@
               </div>
 
               <div class="is-size-5 conference-badge">
-                SIBGRAPI 2026 — Conference on Graphics, Patterns and Images
+                Accepted at SIBGRAPI 2026
               </div>
 
               <div class="column has-text-centered">
