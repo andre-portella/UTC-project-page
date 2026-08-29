@@ -90,6 +90,13 @@
       border-radius: 0 !important;
     }
 
+    .crisp-image {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      max-width: 100%;
+      height: auto;
+    }
+
   </style>
 
   <script type="application/ld+json">
@@ -283,7 +290,12 @@
                 provides a highly effective foundation, achieving the highest final accuracy on 6 out of the 8 benchmarks.
               </p>
             </div>
-            <img src="static/images/results_curves.svg" alt="Active Learning Curves" class="overview-image" loading="lazy">
+            <img 
+              src="static/images/results_curves.png" 
+              srcset="static/images/results_curves.png 1x, static/images/results_curves@2x.png 2x" 
+              alt="Active Learning Curves" 
+              class="overview-image crisp-image" 
+              loading="lazy">
 
           </div>
         </div>
